@@ -1,0 +1,57 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: volcano-mongo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volcanos
+      side: mongo
+  template:
+    metadata:
+      labels:
+        app: volcanos
+        side: mongo
+    spec:
+      volumes:
+        - name: volume-mongo
+      containers:
+        - name: mongo
+          image: mongo
+          volumeMounts:
+            - mountPath: /data/db
+              name: volume-mongo
+          env:
+            - name: MONGO_INITDB_DATABASE
+              value: ./mongo-seed.js
+          ports:
+            - containerPort: 27017
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 200Mi
+            requests:
+              cpu: 500m
+              memory: 30Mi
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: volcano-mongo
+  namespace: default
+spec:
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+  selector:
+    app: volcanos
+    side: mongo
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

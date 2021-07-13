@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+    volcano-api:
+        build: ./VolcanoApi/
+        environment: 
+            - MONGO_URL=mongo
+            - MONGO_PORT=27017
+            - MONGO_DB=volcanoapp
+        ports:
+            - 3000:3000
+        depends_on:
+            - mongo
+
+    volcano-app:
+        build: ./VolcanoApp
+        ports:
+            - 80:80
+        depends_on:
+            - volcano-api
+
+    mongo:
+        image: mongo
+        restart: always
+        volumes: 
+            - ./data/db:/data/db
+        ports: 
+            - 8080:27017
+    

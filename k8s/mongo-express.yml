@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-express
+spec:
+  selector:
+    matchLabels:
+      app: volcanos
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: volcanos
+    spec:
+      containers:
+      - name: volcano-api
+        image: mongo-express
+        env:
+          - name: ME_CONFIG_MONGODB_SERVER
+            value: "volcano-mongo"
+          - name: ME_CONFIG_MONGODB_PORT
+            value: "27017"
+        ports:
+        - containerPort: 8081

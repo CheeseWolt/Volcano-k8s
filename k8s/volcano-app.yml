@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volcano-app
+spec:
+  selector:
+    matchLabels:
+      app: volcanos
+      side: front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: volcanos
+        side: front
+    spec:
+      containers:
+      - name: volcano-app
+        image: benoitsemifir/volcano-app
+        ports:
+        - containerPort: 80

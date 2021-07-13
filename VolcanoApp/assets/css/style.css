@@ -1,0 +1,62 @@
+h1 {
+    text-align: center;
+    background: linear-gradient(orange, #3498db ) ;
+    color: whitesmoke;
+    border-radius: 2rem;
+    width: max-content;
+    margin: 2vh auto;
+    padding: 1.5rem;
+}
+
+#map {
+    height: 80vh;
+}
+
+#loader {
+    border: 1em solid hsla(185, 100%, 62%, 0.2);
+    border-top-color: #3cefff;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top:50vh;
+    left:50vw;
+    display: flex;
+    justify-content: center;
+}
+
+#loader img {
+    width: 75%;
+    animation: none;
+    animation: unspin 1s linear infinite   ;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes unspin {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.mycluster {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    font-size: 20px;    
+    line-height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+}

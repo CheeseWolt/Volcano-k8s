@@ -1,0 +1,27 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: volcanos
+spec:
+  selector:
+    matchLabels:
+      app: volcanos
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: volcanos
+    spec:
+      containers:
+      - name: volcano-api
+        image: benoitsemifir/volcano-api
+        ports:
+        - containerPort: 3000
+      - name: volcano-app
+        image: benoitsemifir/volcano-app
+        ports:
+        - containerPort: 80
+      - name: mongo
+        image: mongo
+        ports:
+        - containerPort: 27017

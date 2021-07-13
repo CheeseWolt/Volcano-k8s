@@ -1,0 +1,21 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: volcano-mongo
+spec:
+  selector:
+    matchLabels:
+      app: volcanos
+      side: mongo
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: volcanos
+        side: mongo
+    spec:
+      containers:
+      - name: mongo
+        image: mongo
+        ports:
+        - containerPort: 27017
