@@ -2,6 +2,7 @@ import Express, { Request, Response } from "express";
 import { CallbackError } from "mongoose";
 import morgan from 'morgan'
 import cors from 'cors';
+import * as dotenv from 'dotenv';
 import { dbConnect } from "./config/mongoConfig";
 import { VolcanoModel, Volcano } from "./models/Volcano.type";
 
@@ -10,6 +11,8 @@ const PORT = process.env['API_PORT'] || 3000;
 
 const app = Express();
 dbConnect();
+
+dotenv.config({ path: __dirname+'/.env' });
 
 app.use(Express.json());
 app.use(morgan("dev"));
