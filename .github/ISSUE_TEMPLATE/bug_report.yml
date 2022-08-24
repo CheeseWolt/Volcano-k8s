@@ -1,0 +1,41 @@
+name: 🐞 Bug Report
+description: Déclarer un bug
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees:
+  - benoitsemifir
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de prendre le temps de décrire le bug ♥
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Décrire le bug
+      description: Qu'aurait-il du se passer?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Sur quel(s) navigateur(s)?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Autre
+  - type: textarea
+    id: logs
+    attributes:
+      label: Vous avez une copie des logs?
+      description: Copiez les logs ici (pas besoin de formater)
+      render: shell
