@@ -1,0 +1,25 @@
+name: ✨ Réclamer une feature
+description: Vous voyez une fonctionnalité qui manque?
+title: "[FEAT]: "
+labels: ["feature", "enhancement"]
+assignees:
+  - benoitsemifir
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Assurez vous que la feature n'a pas déja été demandé
+  
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Donnez nous une bréve description de la feature
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Info complémentaire
+      description: Autres information, capture d'écran, schéma, etc.
